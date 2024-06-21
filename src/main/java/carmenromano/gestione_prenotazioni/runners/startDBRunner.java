@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.UUID;
 
+
 @Component
 public class startDBRunner implements CommandLineRunner {
     @Autowired
@@ -44,12 +45,12 @@ public class startDBRunner implements CommandLineRunner {
             Postazione postazione = context.getBean("postazione", Postazione.class);
             postazioneService.save(postazione);
 
-   //        Utente utenteFound= utenteService.findById(UUID.fromString("f941621a-9afc-4c3d-a2ff-badcc6bc6dc1"));
-   //        Postazione postazione2= postazioneService.findById(UUID.fromString("05bfc95a-0e41-4338-8817-1fa0ea2d17c8"));
+        Utente utenteFound= utenteService.findById(UUID.fromString("f941621a-9afc-4c3d-a2ff-badcc6bc6dc1"));
+        Postazione postazione2= postazioneService.findById(UUID.fromString("05bfc95a-0e41-4338-8817-1fa0ea2d17c8"));
 
 
-    //        Prenotazione prenotazione = new Prenotazione(LocalDate.now(),utenteFound,postazione2);
-    //        prenotazioneService.save(prenotazione);
+         Prenotazione prenotazione = new Prenotazione(LocalDate.of(2024,06,11),utenteFound,postazione2);
+         prenotazioneService.save(prenotazione);
             utenteService.ricercaPostazioni(TipoPostazione.SALA_RIUNIONI, "Serr umbro");
 
 

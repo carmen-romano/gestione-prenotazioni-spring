@@ -24,7 +24,7 @@ public class PrenotazioneService {
             throw new RuntimeException("La postazione non è disponibile per la data: " + dataPrenotazione);
         }
 
-        if (prenotazioneRepo.findByUtenteIdAndDataPrenotazione(utenteId, dataPrenotazione)) {
+        if (prenotazioneRepo.existsByUtenteIdAndDataPrenotazione(utenteId, dataPrenotazione)) {
             throw new RuntimeException("L'utente con ID " + utenteId + " ha già una prenotazione per la data " + dataPrenotazione);
         }
 
