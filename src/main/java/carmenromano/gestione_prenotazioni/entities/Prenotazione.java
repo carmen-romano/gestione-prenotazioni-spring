@@ -28,8 +28,8 @@ public class Prenotazione {
     @JoinColumn(name = "utente_id")
     private Utente utente;
 
-    @Column(unique = true)
     private LocalDate dataPrenotazione;
+
 
     public Prenotazione(LocalDate dataPrenotazione, Utente utente, Postazione postazione) {
         this.dataPrenotazione = dataPrenotazione;
