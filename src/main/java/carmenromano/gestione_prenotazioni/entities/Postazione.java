@@ -17,6 +17,7 @@ import java.util.UUID;
 @Table(name = "postazione")
 public class Postazione {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(AccessLevel.NONE)
     private UUID id;
     private  String descrizione;
@@ -28,10 +29,11 @@ public class Postazione {
     @OneToMany(mappedBy = "postazione")
     private List<Prenotazione> prenotazione;
 
-    public Postazione(TipoPostazione tipoPostazione, String descrizione, int numeroMassimoOccupanti) {
+    public Postazione(TipoPostazione tipoPostazione, String descrizione, int numeroMassimoOccupanti, Edificio edificio) {
         this.tipoPostazione = tipoPostazione;
         this.descrizione = descrizione;
         this.numeroMassimoOccupanti = numeroMassimoOccupanti;
+        this.edificio = edificio;
     }
 
     @Override
