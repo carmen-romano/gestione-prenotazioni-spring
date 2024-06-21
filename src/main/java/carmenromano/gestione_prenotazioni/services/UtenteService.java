@@ -47,5 +47,8 @@ public class UtenteService {
         }
         return postazioni;
     }
+    public Utente findByUsername(String username) {
+        return utenteRepo.findByUsername(username);
+    }
 
 }

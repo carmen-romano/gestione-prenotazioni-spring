@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,7 +20,6 @@ public class PostazioneService {
     @Autowired
     private EdificioRepo edificioRepo;
 
-    @Transactional
     public void save(Postazione postazione) {
         Edificio edificio = postazione.getEdificio();
         if (edificio.getId() == null) {
@@ -33,10 +33,13 @@ public class PostazioneService {
         return postazioneRepo.findById(id).orElseThrow(() -> new NotFoundException(id));
     }
 
-    @Transactional
     public void findByIdAndDelete(UUID id) {
         Postazione postazione = postazioneRepo.findById(id)
                 .orElseThrow(() -> new NotFoundException(id));
         postazioneRepo.delete(postazione);
     }
+    public List<Postazione> findAll() {
+        return postazioneRepo.findAll();
+    }
+
 }
